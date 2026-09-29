@@ -1,0 +1,43 @@
+:root {
+  --bg: #f7f8fa;
+  --card: #ffffff;
+  --line: #e8eaed;
+  --ink: #1f2328;
+  --sub: #6b7280;
+  --brand: #2f6feb;
+  --danger: #d14343;
+  font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; background: var(--bg); color: var(--ink); font-size: 14px; }
+.app { display: grid; grid-template-rows: 48px 1fr 28px; height: 100%; }
+.top, .status, .nav, .page { background: var(--card); }
+.top, .status { display: flex; align-items: center; gap: 8px; padding: 0 16px; border-bottom: 1px solid var(--line); }
+.top select, .top > button, select {
+  height: 32px; border: 1px solid var(--line); border-radius: 8px; background: #fff;
+  color: var(--ink); padding: 0 10px; font: inherit; font-size: 13px;
+}
+.top > button { cursor: pointer; }
+@media (max-width: 1080px) {
+  .body { grid-template-columns: 1fr; }
+  .nav { display: flex; gap: 4px; overflow: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+  .nav button { width: auto; white-space: nowrap; }
+  .page { margin: 8px; }
+}
+.status { border-bottom: 0; border-top: 1px solid var(--line); color: var(--sub); font-size: 12.5px; gap: 16px; }
+.body { display: grid; grid-template-columns: 220px 1fr; min-height: 0; }
+.nav { border-right: 1px solid var(--line); padding: 8px; }
+.nav button {
+  display: block; width: 100%; text-align: left; height: 32px; margin: 4px 0;
+  border: 0; background: transparent; border-radius: 8px; color: var(--sub); cursor: pointer; font-size: 14px;
+}
+.nav button.on { background: #eef3ff; color: var(--brand); font-weight: 600; }
+.page { margin: 16px; padding: 16px; border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 1px 2px rgba(16,24,40,.04); overflow: auto; }
+h1 { margin: 0 0 8px; font-size: 15px; font-weight: 600; }
+p.hint { color: var(--sub); font-size: 12.5px; }
+label { display: block; font-size: 12.5px; color: var(--sub); margin: 12px 0 4px; }
+input { width: 100%; max-width: 520px; height: 32px; border: 1px solid var(--line); border-radius: 8px; padding: 0 10px; font: inherit; font-size: 14px; }
+.row { display: flex; gap: 8px; margin-top: 16px; }
+button.primary { height: 32px; border: 0; border-radius: 8px; background: var(--brand); color: #fff; padding: 0 14px; cursor: pointer; }
+button.ghost { height: 32px; border: 1px solid var(--brand); border-radius: 8px; background: #fff; color: var(--brand); padding: 0 14px; cursor: pointer; }
+.ok { color: #1c7a4a; font-size: 12.5px; }

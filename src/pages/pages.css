@@ -1,0 +1,114 @@
+/* 页面级样式（Wendy 负责的五个页面用）。前缀 p-，不改 theme.css，避免和外壳样式打架。 */
+
+.p-grid3 { display: grid; grid-template-columns: 240px 1fr 260px; gap: 16px; align-items: start; }
+.p-grid2 { display: grid; grid-template-columns: 1fr 320px; gap: 16px; align-items: start; }
+@media (max-width: 1080px) { .p-grid3, .p-grid2 { grid-template-columns: 1fr; } }
+
+.p-block { border: 1px solid var(--line); border-radius: 10px; padding: 12px; margin-bottom: 16px; background: #fff; }
+.p-block > h2 { margin: 0 0 10px; font-size: 15px; }
+.p-sub { color: var(--sub); font-size: 12.5px; }
+.p-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.p-row.between { justify-content: space-between; }
+.p-mt { margin-top: 12px; }
+
+.p-stream { min-height: 280px; max-height: 460px; overflow: auto; display: flex; flex-direction: column; gap: 10px; padding: 4px 2px; }
+.p-bubble { max-width: 82%; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff; white-space: pre-wrap; word-break: break-word; font-size: 14px; }
+.p-bubble.me { align-self: flex-end; background: #eef3ff; border-color: #cfe0fd; }
+.p-bubble.err { background: #fdf2f2; border-color: #e3b4b4; color: var(--danger); }
+.p-bubble .p-actions { display: flex; gap: 8px; margin-top: 8px; }
+
+.p-input { width: 100%; max-width: none; }
+textarea.p-input { height: auto; min-height: 84px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; font: inherit; font-size: 14px; resize: vertical; }
+select.p-input { height: 32px; border: 1px solid var(--line); border-radius: 8px; padding: 0 8px; font: inherit; font-size: 14px; }
+
+.p-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.p-table th, .p-table td { border-bottom: 1px solid var(--line); padding: 7px 8px; text-align: left; vertical-align: top; }
+.p-table th { color: var(--sub); font-size: 12.5px; font-weight: 600; background: #fbfcfd; }
+.p-table tr.on td { background: #f5f8ff; }
+
+.p-tag { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--sub); }
+.p-tag.active { color: #1c7a4a; border-color: #a9d6bd; background: #eefaf3; }
+.p-tag.draft { color: #b4530a; border-color: #f0cfa8; background: #fdf5ea; }
+
+.p-empty { color: var(--sub); text-align: center; padding: 20px 8px; font-size: 13px; }
+.p-drawer { border-left: 1px dashed var(--line); padding-left: 12px; font-size: 12.5px; color: var(--sub); }
+.p-card-list { display: flex; flex-direction: column; gap: 8px; }
+.p-draggable { border: 1px dashed var(--line); border-radius: 8px; padding: 10px; color: var(--sub); font-size: 12.5px; text-align: center; }
+.p-danger { color: var(--danger); }
+.p-ok { color: #1c7a4a; font-size: 12.5px; }
+.p-warn { color: #b4530a; font-size: 12.5px; }
+
+/* 对话调优：主列撑满、可滚动；素材走弹窗（Mio 的版式意见） */
+.p-main { display: flex; flex-direction: column; }
+.p-stream-tall { max-height: min(68vh, 720px); }
+.p-modal-wide { width: min(760px, 92vw); }
+.p-modal-box { max-height: 86vh; overflow: auto; }
+
+/* 二次确认弹层（危险操作：文字色用红，不用红底按钮——按《文案与交互清单》§0） */
+.p-modal { position: fixed; inset: 0; background: rgba(16, 24, 40, 0.28); display: flex; align-items: center; justify-content: center; z-index: 50; }
+.p-modal-box { width: 380px; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 16px; box-shadow: 0 8px 24px rgba(16, 24, 40, 0.12); }
+button.ghost.p-danger { color: var(--danger); border-color: var(--danger); background: #fff; }
+
+/* 导出预览的两栏清单 */
+.p-list { margin: 4px 0 0; padding-left: 18px; font-size: 13.5px; }
+.p-list li { margin: 2px 0; }
+
+/* 体验模式顶部横幅（文案清单 §4） */
+.p-banner {
+  background: #eef3ff; border: 1px solid #cfe0fd; color: var(--brand);
+  border-radius: 8px; padding: 8px 12px; font-size: 13px; margin-bottom: 12px;
+}
+
+/* ============ 可读性（Mio 反馈：字体不协调、太挤） ============ */
+.p-block { font-size: 14px; line-height: 1.7; }
+.p-block h2 { font-size: 15px; font-weight: 600; margin: 0 0 6px; letter-spacing: 0.2px; }
+.p-sub, .p-empty, .p-ok, .p-warn { line-height: 1.75; }
+.p-ok { color: #1c7a4a; }
+.p-warn { color: #b4530a; }
+label { line-height: 1.6; }
+/* 按钮文字一律不折行（截图里「存为知识条目」被挤成三行就是这里） */
+button { white-space: nowrap; }
+.p-actions { flex-wrap: wrap; row-gap: 6px; }
+.p-bubble { max-width: 100%; overflow-wrap: anywhere; }
+.p-drawer { max-height: 340px; overflow: auto; line-height: 1.8; }
+
+/* ============ Markdown 渲染（src/pages/md.tsx 输出） ============ */
+.md { font-size: 14px; line-height: 1.85; }
+.md > *:first-child { margin-top: 0; }
+.md > *:last-child { margin-bottom: 0; }
+.md-p { margin: 0 0 8px; }
+.md-h { margin: 12px 0 6px; font-weight: 600; line-height: 1.5; }
+.md-h3 { font-size: 15px; }
+.md-h4 { font-size: 14px; }
+.md-h5, .md-h6 { font-size: 13.5px; color: var(--sub); }
+.md-list { margin: 4px 0 10px; padding-left: 22px; }
+.md-list li { margin: 3px 0; }
+.md-code {
+  background: #f2f4f7; border: 1px solid var(--line); border-radius: 4px;
+  padding: 0 4px; font-family: Consolas, "Courier New", monospace; font-size: 13px;
+}
+.md-pre {
+  background: #f7f8fa; border: 1px solid var(--line); border-radius: 8px;
+  padding: 10px 12px; margin: 6px 0 10px; overflow: auto;
+  font-family: Consolas, "Courier New", monospace; font-size: 13px; line-height: 1.7;
+}
+.md-table-wrap { margin: 6px 0 10px; border: 1px solid var(--line); border-radius: 8px; overflow: auto; }
+.md-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.md-table th, .md-table td { border-bottom: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+.md-table th { background: #f7f8fa; font-weight: 600; white-space: nowrap; }
+.md-table tr:last-child td { border-bottom: 0; }
+
+/* ============ 窗口变窄时的重排（Mio 反馈：不同窗口大小没做好缩放） ============ */
+.p-grid3 { grid-template-columns: minmax(200px, 260px) minmax(320px, 1fr) minmax(220px, 300px); gap: 12px; align-items: start; }
+.p-grid2 { grid-template-columns: minmax(0, 1fr) minmax(240px, 340px); gap: 12px; align-items: start; }
+.p-block { min-width: 0; }        /* 让表格/长文本能在栏内收缩，而不是把栏撑破 */
+.p-stream { max-height: min(60vh, 620px); }
+
+@media (max-width: 1180px) {
+  .p-grid3 { grid-template-columns: minmax(0, 1fr) minmax(220px, 300px); }
+  .p-grid3 > .p-block:first-child { grid-column: 1 / -1; }   /* 素材区整行放到最上面 */
+}
+@media (max-width: 900px) {
+  .p-grid3, .p-grid2 { grid-template-columns: minmax(0, 1fr); }
+  .p-grid3 > .p-block:nth-child(2) { order: -1; }            /* 窄窗时先看对话区 */
+}
